@@ -1,4 +1,4 @@
-![Cloudflare Worker][img/worker.png]
+![Cloudflare Worker](img/worker.png)
 
 # Cloudflare Worker Yomitan Audio Source
 
@@ -22,13 +22,13 @@ If you want a no-hassle setup consider signing up for the $1 tier on the Patreon
 
 2. Create a worker and select the "Hello World" template.
 
-    ![Worker Setup][img/add_worker.png]
+    ![Worker Setup](img/add_worker.png)
 
-    ![Hello World][img/helloworld.png]
+    ![Hello World](img/helloworld.png)
 
 3. Name your worker `yomitan-audio-worker` and deploy it.
 
-    ![Worker Name][img/worker_name.png]
+    ![Worker Name](img/worker_name.png)
 
 4. Go to `R2 Project Storage` in the left sidebar and create a new bucket named `yomitan-audio-bucket`.
 
@@ -61,7 +61,7 @@ If you want a no-hassle setup consider signing up for the $1 tier on the Patreon
 
 6. Go [here](https://dash.cloudflare.com/?to=/:account/r2/api-tokens) and create an API Token to access your R2 bucket.
 
-    ![API Token][img/api_key.png]
+    ![API Token](img/api_key.png)
 
 7. Upload the audio files to your R2 bucket by running the following command, replacing the placeholders with your own values from the previous step:
 
