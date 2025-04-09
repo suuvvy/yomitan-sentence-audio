@@ -1,0 +1,10 @@
+.vscode
+.wrangler
+.dev.vars
+bundled
+node_modules
+wrangler.toml
+data/*files
+*txt
+*zip
+*sql
