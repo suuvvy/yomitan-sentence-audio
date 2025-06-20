@@ -2,6 +2,10 @@
 
 # Cloudflare Worker Yomitan Audio Source
 
+**!! Japanese Only !!**
+
+**No commits does not mean not maintained. If there's a problem, create an issue!**
+
 This is a self deployable Cloudflare Worker that serves as an audio source for Yomitan. Hosting it for yourself falls completely within the free limits of Cloudflare Workers. As an audio source it can be used from any device without having to run a local server or install an Anki-Addon or have any local storage used up. [^1]
 
 Additionally it has extra features like pitch accent aware TTS and boasts the largest collection of Japanese audio available. Read more here: <https://animecards.site/yomitan_audio/>
