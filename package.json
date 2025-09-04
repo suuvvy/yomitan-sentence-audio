@@ -1,5 +1,5 @@
 {
-	"name": "yomitan-audio-worker",
+	"name": "yomitan-sentence-audio-worker",
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {

@@ -9,11 +9,11 @@ export interface YomitanResponse {
 export interface YomitanAudioSource {
     name: string;
     url: string;
+    sentence: string | null;
 }
 
 export async function generateYomitanResponseObject(
     entries: AudioEntry[],
-    ttsEntries: YomitanAudioSource[],
     request: IRequest,
     env: Env
 ): Promise<YomitanResponse> {
@@ -38,11 +38,12 @@ export async function generateYomitanResponseObject(
         return {
             name: entry.display,
             url: audioUrl.toString(),
+            sentence: entry.sentence,
         };
     });
 
     return {
         type: 'audioSourceList',
-        audioSources: [...audioSources, ...ttsEntries],
+        audioSources: [...audioSources],
     };
 }

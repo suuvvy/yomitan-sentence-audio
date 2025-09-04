@@ -10,6 +10,7 @@ export interface AudioEntry {
     source: string;
     file: string;
     display: string;
+    sentence: string | null;
 }
 
 export async function queryAudioDB(term: string, reading: string, sources: AudioSource[], env: Env): Promise<AudioEntry[]> {
@@ -30,7 +31,7 @@ export async function queryAudioDB(term: string, reading: string, sources: Audio
 
     const query = `SELECT expression, reading, source, file, display FROM entries ${baseCondition}`;
 
-    let d1results: D1Result = await env.yomitan_audio_d1_db
+    let d1results: D1Result = await env.yomitan_sentence_audio_d1_db
         .prepare(query)
         .bind(...params)
         .all();
@@ -52,11 +53,11 @@ export async function generateDisplayNames(entries: AudioEntry[], term: string, 
         }
 
         if (term == entry.expression && reading == entry.reading) {
-            name += ` (Expression+Reading)`;
+            name += ` (E+R)`;
         } else if (term == entry.expression) {
-            name += ` (Only Expression)`;
+            name += ` (E)`;
         } else if (reading == entry.reading) {
-            name += ` (Only Reading)`;
+            name += ` (R)`;
         }
 
         names.push(name);
@@ -67,23 +68,15 @@ export async function generateDisplayNames(entries: AudioEntry[], term: string, 
 
 export async function sortResults(entries: AudioEntry[], names: string[]): Promise<AudioEntry[]> {
     const sourcePriority: { [key: string]: number } = {
-        nhk16: 0,
-        daijisen: 1,
-        shinmeikai8: 2,
-        jpod: 3,
-        taas: 4,
-        ozk5: 5,
-        forvo: 6,
-        forvo_ext: 7,
-        forvo_ext2: 8,
-        tts: 9,
+        core: 0,
+        alt: 1
     };
 
     const getMatchTypePriority = (name?: string): number => {
         if (!name) return 3;
-        if (name.includes('(Expression+Reading)')) return 0;
-        if (name.includes('(Only Expression)')) return 1;
-        if (name.includes('(Only Reading)')) return 2;
+        if (name.includes('(E+R)')) return 0;
+        if (name.includes('(E)')) return 1;
+        if (name.includes('(R)')) return 2;
         return 3;
     };
 
@@ -91,6 +84,7 @@ export async function sortResults(entries: AudioEntry[], names: string[]): Promi
         const copy = { ...entry };
 
         if (index < names.length) {
+            copy.sentence = copy.display;
             copy.display = names[index];
         } else {
             copy.display = undefined as unknown as string;

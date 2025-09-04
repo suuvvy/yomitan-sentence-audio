@@ -1,16 +1,15 @@
-name = "yomitan-audio-worker"
+name = "yomitan-sentence-audio-worker"
 main = "src/index.ts"
 compatibility_date = "2025-03-21"
 
 [vars]
 AUTHENTICATION_ENABLED=true
-AWS_POLLY_ENABLED=true
 
 [[d1_databases]]
-binding = "yomitan_audio_d1_db"
-database_name = "yomitan-audio-db"
+binding = "yomitan_sentence_audio_d1_db"
+database_name = "yomitan-sentence-audio-db"
 database_id = "YOUR_DATABASE_ID_HERE"
 
 [[r2_buckets]]
-binding = "yomitan_audio_r2_bucket"
-bucket_name = "yomitan-audio-bucket"
+binding = "yomitan_sentence_audio_r2_bucket"
+bucket_name = "yomitan-sentence-audio-bucket"

@@ -73,16 +73,8 @@ export async function unpack_term_reading(request: IRequest): Promise<[string, s
 
 const VALID_AUDIO_SOURCES = [
     'all',
-    'nhk16',
-    'daijisen',
-    'shinmeikai8',
-    'jpod',
-    'taas',
-    'ozk5',
-    'forvo',
-    'forvo_ext',
-    'forvo_ext2',
-    'tts',
+    'core',
+    'alt',
 ] as const;
 
 export type AudioSource = (typeof VALID_AUDIO_SOURCES)[number];
@@ -114,16 +106,4 @@ export async function unpack_sources(request: IRequest): Promise<AudioSource[]> 
     });
 
     return validSources;
-}
-
-export async function unpack_pitch(request: IRequest): Promise<string> {
-    const query = request.query || {};
-
-    const rawPitch = extractQueryParam(query.pitch);
-
-    if (rawPitch === undefined || rawPitch.length === 0) {
-        return '';
-    } else {
-        return rawPitch;
-    }
 }

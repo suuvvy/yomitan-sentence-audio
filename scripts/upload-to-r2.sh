@@ -12,20 +12,12 @@ fi
 
 # Array of folders to upload
 folders=(
-  "daijisen_files"
-  "forvo_ext2_files"
-  "forvo_ext_files"
-  "forvo_files"
-  "jpod_files"
-  "nhk16_files"
-  "ozk5_files"
-  "shinmeikai8_files"
-  "taas_files"
-  "tts_files"
+  "alt_files"
+  "core_files"
 )
 
 # Bucket name
-BUCKET="yomitan-audio-bucket"
+BUCKET="yomitan-sentence-audio-bucket"
 
 # Create a temporary rclone config file
 TEMP_CONFIG=$(mktemp)
